@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "location": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Contains information about a geographical location where resource providers can be deployed.",
+            "properties": {
+                "displayName": {
+                    "description": "Display name of the location.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Location identifier.",
+                    "type": "string"
+                },
+                "latitude": {
+                    "description": "Latitude of the location.",
+                    "type": "string"
+                },
+                "longitude": {
+                    "description": "Longitude of the location.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Location name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2015-11-01"
+        }
+    }
+}

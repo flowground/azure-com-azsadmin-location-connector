@@ -1,0 +1,518 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "https://adminmanagement.local.azurestack.external/"
+        }
+    ],
+    "info": {
+        "description": "The Admin Subscriptions Management Client.",
+        "title": "SubscriptionsManagementClient",
+        "version": "2015-11-01",
+        "x-apisguru-categories": [
+            "cloud"
+        ],
+        "x-logo": {
+            "url": "https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png"
+        },
+        "x-origin": [
+            {
+                "format": "swagger",
+                "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/azsadmin/resource-manager/subscriptions/Microsoft.Subscriptions.Admin/preview/2015-11-01/Location.json",
+                "version": "2.0"
+            }
+        ],
+        "x-preferred": true,
+        "x-providerName": "azure.com",
+        "x-serviceName": "azsadmin-Location",
+        "x-tags": [
+            "Azure",
+            "Microsoft"
+        ]
+    },
+    "security": [
+        {
+            "azure_auth": [
+                "user_impersonation"
+            ]
+        }
+    ],
+    "paths": {
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations": {
+            "get": {
+                "description": "Get a list of all AzureStack location.",
+                "operationId": "Locations_List",
+                "parameters": [
+                    {
+                        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Client Api Version.",
+                        "in": "query",
+                        "name": "api-version",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "2015-11-01"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "List of locations.",
+                                    "properties": {
+                                        "nextLink": {
+                                            "description": "URI to next page.",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "List of locations.",
+                                            "items": {
+                                                "description": "Contains information about a geographical location where resource providers can be deployed.",
+                                                "properties": {
+                                                    "displayName": {
+                                                        "description": "Display name of the location.",
+                                                        "type": "string"
+                                                    },
+                                                    "id": {
+                                                        "description": "Location identifier.",
+                                                        "type": "string"
+                                                    },
+                                                    "latitude": {
+                                                        "description": "Latitude of the location.",
+                                                        "type": "string"
+                                                    },
+                                                    "longitude": {
+                                                        "description": "Longitude of the location.",
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "description": "Location name.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Locations"
+                ],
+                "x-ms-examples": {
+                    "Get a list of all AzureStack location.": {
+                        "parameters": {
+                            "api-version": "2015-11-01",
+                            "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "value": [
+                                        {
+                                            "displayName": "local",
+                                            "id": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/providers/Microsoft.Subscriptions.Admin/locations/local",
+                                            "latitude": "",
+                                            "longitude": "",
+                                            "name": "local"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-ms-pageable": {
+                    "nextLinkName": "nextLink"
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}": {
+            "delete": {
+                "description": "Deletes the specified location.",
+                "operationId": "Locations_Delete",
+                "parameters": [
+                    {
+                        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "The AzureStack location.",
+                        "in": "path",
+                        "name": "location",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Client Api Version.",
+                        "in": "query",
+                        "name": "api-version",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "2015-11-01"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "tags": [
+                    "Locations"
+                ],
+                "x-ms-examples": {
+                    "Deletes the specified location.": {
+                        "parameters": {
+                            "api-version": "2015-11-01",
+                            "location": "local",
+                            "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+                        },
+                        "responses": {
+                            "200": {},
+                            "204": {}
+                        }
+                    }
+                }
+            },
+            "get": {
+                "description": "Get the specified location.",
+                "operationId": "Locations_Get",
+                "parameters": [
+                    {
+                        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "The AzureStack location.",
+                        "in": "path",
+                        "name": "location",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Client Api Version.",
+                        "in": "query",
+                        "name": "api-version",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "2015-11-01"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Contains information about a geographical location where resource providers can be deployed.",
+                                    "properties": {
+                                        "displayName": {
+                                            "description": "Display name of the location.",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "Location identifier.",
+                                            "type": "string"
+                                        },
+                                        "latitude": {
+                                            "description": "Latitude of the location.",
+                                            "type": "string"
+                                        },
+                                        "longitude": {
+                                            "description": "Longitude of the location.",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Location name.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Locations"
+                ],
+                "x-ms-examples": {
+                    "Get the specified location.": {
+                        "parameters": {
+                            "api-version": "2015-11-01",
+                            "location": "local",
+                            "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "displayName": "local",
+                                    "id": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/providers/Microsoft.Subscriptions.Admin/locations/local",
+                                    "latitude": "",
+                                    "longitude": "",
+                                    "name": "local"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Updates the specified location.",
+                "operationId": "Locations_CreateOrUpdate",
+                "parameters": [
+                    {
+                        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "The AzureStack location.",
+                        "in": "path",
+                        "name": "location",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Client Api Version.",
+                        "in": "query",
+                        "name": "api-version",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "2015-11-01"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Contains information about a geographical location where resource providers can be deployed.",
+                                    "properties": {
+                                        "displayName": {
+                                            "description": "Display name of the location.",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "Location identifier.",
+                                            "type": "string"
+                                        },
+                                        "latitude": {
+                                            "description": "Latitude of the location.",
+                                            "type": "string"
+                                        },
+                                        "longitude": {
+                                            "description": "Longitude of the location.",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Location name.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Locations"
+                ],
+                "x-ms-examples": {
+                    "Updates the specified location.": {
+                        "parameters": {
+                            "api-version": "2015-11-01",
+                            "location": "local",
+                            "newLocation": {
+                                "displayName": "local",
+                                "latitude": "56",
+                                "longitude": "65",
+                                "name": "local"
+                            },
+                            "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "displayName": "local",
+                                    "id": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/providers/Microsoft.Subscriptions.Admin/locations/local",
+                                    "latitude": "",
+                                    "longitude": "",
+                                    "name": "local"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "Contains information about a geographical location where resource providers can be deployed.",
+                                "properties": {
+                                    "displayName": {
+                                        "description": "Display name of the location.",
+                                        "type": "string"
+                                    },
+                                    "id": {
+                                        "description": "Location identifier.",
+                                        "type": "string"
+                                    },
+                                    "latitude": {
+                                        "description": "Latitude of the location.",
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "description": "Longitude of the location.",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "Location name.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "The new location",
+                    "required": true
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Location": {
+                "description": "Contains information about a geographical location where resource providers can be deployed.",
+                "properties": {
+                    "displayName": {
+                        "description": "Display name of the location.",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Location identifier.",
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "description": "Latitude of the location.",
+                        "type": "string"
+                    },
+                    "longitude": {
+                        "description": "Longitude of the location.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Location name.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "LocationList": {
+                "description": "List of locations.",
+                "properties": {
+                    "nextLink": {
+                        "description": "URI to next page.",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "List of locations.",
+                        "items": {
+                            "description": "Contains information about a geographical location where resource providers can be deployed.",
+                            "properties": {
+                                "displayName": {
+                                    "description": "Display name of the location.",
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "description": "Location identifier.",
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "description": "Latitude of the location.",
+                                    "type": "string"
+                                },
+                                "longitude": {
+                                    "description": "Longitude of the location.",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Location name.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "azure_auth": {
+                "description": "Azure Active Directory OAuth2 flow",
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+                        "scopes": {
+                            "user_impersonation": "impersonate your user account"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
